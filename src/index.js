@@ -11,18 +11,19 @@ module.exports = function check(str, bracketsConfig) {
     bracketsArrow[i] === '(' ||
     bracketsArrow[i] === '{' )
     stack.push(bracketsArrow[i]);
-  }  else if (bracketsArrow[i] === ']' && bracketsArrow[i - 1] === '[' ||
-    bracketsArrow[i] === ')' && bracketsArrow[i - 1] === '('||
-    bracketsArrow[i] === '}' && bracketsArrow[i - 1] === '}')
-    {
-      if stack
-    }
-    stack.pop(bracketsArrow[i - 1]);
-
-  
+    
+    else if (bracketsArrow[i] === ']' ||
+    bracketsArrow[i] === ')' ||
+    bracketsArrow[i] === '}' ) {
+      if (!stack.length) {
+        return false;
+      } else bracketsConfig.push(stack.pop()) //+ bracketsArrow[i];
+    }    
+  }
+    return !stack.length ? true : false;
 
   console.log(str);
   console.log('stack:' + stack);
 }
 
-check('([{}])', [['(', ')'], ['[', ']'], ['{', '}']]) // -> true
+
