@@ -1,29 +1,17 @@
 module.exports = function check(str, bracketsConfig) {
   // your solution
-  let bracketsArrow = str.split('');
-  // let open = ['[', '(', '{'];
-  // let close = [']', ')', '}'];
-  let stack = [];
-  let bracketsConfig = [];
-
-  for (let i = 0; i < bracketsArrow.length; i++) {
-    if (bracketsArrow[i] === '[' ||
-    bracketsArrow[i] === '(' ||
-    bracketsArrow[i] === '{' )
-    stack.push(bracketsArrow[i]);
-    
-    else if (bracketsArrow[i] === ']' ||
-    bracketsArrow[i] === ')' ||
-    bracketsArrow[i] === '}' ) {
-      if (!stack.length) {
-        return false;
-      } else bracketsConfig.push(stack.pop()) //+ bracketsArrow[i];
-    }    
+  arr = str.split('')
+  for (i = 0; i < arr.length; i++) {
+    for(j = 0; j < bracketsConfig.length[i]; j++) {
+      if (arr.length[i] == bracketsConfig[i][j] && arr.length[i+1] == bracketsConfig[i][j+1]) {        
+          arr.splice(i, 2);
+          i = 0;
+          j = 0;             
+      } 
+    }
   }
-    return !stack.length ? true : false;
-
-  console.log(str);
-  console.log('stack:' + stack);
+  return arr.length == 0;
 }
+
 
 
