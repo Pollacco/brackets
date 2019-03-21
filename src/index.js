@@ -1,17 +1,17 @@
 module.exports = function check(str, bracketsConfig) {
   // your solution
-  arr = str.split('')
-  for (i = 0; i < arr.length; i++) {
-    for(j = 0; j < bracketsConfig.length; j++) {
-      if (arr[i] == bracketsConfig[j][0] && arr[i+1] == bracketsConfig[j][1]) {        
+  let arr = str.split('');
+  for (j = 0; j < bracketsConfig.length; j++){
+    i = 0;
+    do {
+      if (arr[i] == bracketsConfig[j][0] && arr[i + 1] == bracketsConfig[j][1]) {
         arr.splice(i, 2);
         i = 0;
-        j = 0;             
+        j = 0;
       } else {
-        continue;
-      } 
-    }
+        i++;
+      }
+    } while (i < arr.length);
   }
-  return arr.length == 0;
+  return arr.length == 0;   
 }
-
